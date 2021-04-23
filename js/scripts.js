@@ -17,7 +17,8 @@ const search_html =
     `;
 document.querySelector(".search-container").insertAdjacentHTML("beforeend",
 	search_html);
-// fetching 12 american employees randomly from the API.
+
+    // fetching 12 american employees randomly from the API.
 const employee_array = [];
 const gallery_div = document.getElementById("gallery");
 fetch("https://randomuser.me/api/?results=12&nat=us").then(res => res.json()).then(
@@ -65,15 +66,17 @@ function displayModal(employee_id) {
                 <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
                 <div class="modal-info-container">
                     <img class="modal-img" src="${selected_employee[0].picture.large}" alt="profile picture">
-                    <h3 id="${selected_employee[0].id.value}" class="modal-name cap">${selected_employee[0].name.first} ${selected_employee[0].name.last}</h3>
+                    <h3 id="${selected_employee[0].id.value}" class="modal-name cap">${selected_employee[0].name.first}\
+                             ${selected_employee[0].name.last}</h3>
                     <p class="modal-text">${selected_employee[0].email}</p>
                     <p class="modal-text cap">${selected_employee[0].location.city}</p>
                     <hr>
                     <p class="modal-text">${selected_employee[0].phone}</p>
-                    <p class="modal-text">${selected_employee[0].location.street}, /
-                                        ${selected_employee[0].location.state}, /
-                                        ${selected_employee[0].location.postcode}</p>
-                    <p class="modal-text">Birthday: ${selected_employee[0].dob.date}</p>
+                    <p class="modal-text">${selected_employee[0].location.street.number}, \
+                        ${selected_employee[0].location.street.name}. \
+                        ${selected_employee[0].location.state}. \
+                        zip: ${selected_employee[0].location.postcode}.</p>
+                    <p class="modal-text">Birthday: ${selected_employee[0].dob.date.slice(0,10)}</p>
                 </div>
             </div>
             <div class="modal-btn-container">
