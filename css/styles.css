@@ -94,18 +94,21 @@ header h1 {
     max-width: 360px;
     margin: 10px 5px 20px;
     padding: 20px 5px;
-    background-color:ghostwhite;
+    background-color:white;
     border-radius: 20px;
     box-shadow: 0 0 5px 2px rgb(190, 204, 191);
     border: 1px solid rgba(209, 219, 208, 0.918);
     transition: 4ms ease-out;
     overflow: hidden;
+    font-family: monospace;
 }
 
 .card:hover{
-    box-shadow: 0 0 8px grey;
+    box-shadow: 0 0 8px 3px grey;
 }
-
+.card:hover .card-text {
+    color: rgb(36, 39, 58);
+}
 .card-img {
     width: 90px;
     margin: auto;
@@ -117,13 +120,14 @@ header h1 {
 }
 
 .card-name {
+    font-size: 1rem;
     margin: 10px 5px auto 0;
-    color: rgba(0,0,0,.7);
+    color: rgba(0, 0, 0, 0.795);
 }
 
 .card-text {
-    font-size: 0.9em;
-    color: rgba(0,0,0,.7);
+    font-size: 0.8rem;
+    color: grey;
     margin: 7px auto;
     transition: .4s ease-out;
 }
@@ -277,14 +281,14 @@ header h1 {
     .card:hover {
         width: 90%;
         border: 1px solid rgb(152, 240, 168);
-        box-shadow: 0px 0px 15px rgb(188, 241, 175);
+        box-shadow: 0px 0px 15px grey;
     }
     .card:active {
         box-shadow: 0 0 4px;
     }
 
     .card:hover .card-text {
-        color: rgb(48, 42, 42); 
+        color: rgb(36, 39, 58); 
     }
 
     .btn:hover {
