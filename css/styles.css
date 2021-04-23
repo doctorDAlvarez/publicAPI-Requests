@@ -16,11 +16,13 @@ html, body {
 body {
     font-family: "Nunito", sans-serif;
     text-align: center;
-    background: rgba(235, 235, 235, 0.9);
+    background: white;
 }
 
 header {
-    padding: 15px 5px 5px;
+    padding: 5px;
+    margin-bottom: 3rem;
+    background-color: rgba(237,238,236,.8);
 }
 
 .header-inner-container {
@@ -29,19 +31,24 @@ header {
 }
 
 header h1 {
-    font-size: 1.25em;
-    color: rgba(50, 50, 50, 0.9);
-    margin-top: 35px;
+    font-family: 'Zen Dots', cursive;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    color:#376168;
+    margin: 35px auto;
+    max-width: 70vw;
+    text-shadow: 0 0 6px 1px lightgrey;
 }
-
 .search-input {
     padding: 0.4rem 1rem;
     border: 1px solid rgba(200, 200, 200, 0.9);
     border-radius: 0.25rem 0 0 0.25rem ;
-    max-width: 20rem;
+    max-width: 30rem;
     transition: .4s ease-out;
     outline: none;
 }
+
+
 
 .search-input:active, .search-input:hover, .search-input:focus {
     border: 1px solid rgba(50, 50, 50, 0.9);
@@ -85,13 +92,18 @@ header h1 {
     cursor: pointer;
     width: 100%;
     max-width: 360px;
-    margin: 10px 10px 20px;
+    margin: 10px 5px 20px;
     padding: 10px;
-    background: rgba(245, 245, 245, 0.9);
-    border-radius: 0.25em;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 0 10px 2px lightgrey;
     border: 1px solid rgba(50, 50, 50, 0.3);
-    transition: .4s ease-out;
+    transition: 2ms ease-out;
     overflow: hidden;
+}
+
+.card:hover{
+    box-shadow: 2px 4px 3px grey;
 }
 
 .card-img {
@@ -102,10 +114,12 @@ header h1 {
 
 .card-info-container {
     text-align: left;
+    padding: 1rem;
+    width: 100%;
 }
 
 .card-name {
-    margin: 20px auto 0;
+    margin: 10px 5px auto 0;
 }
 
 .card-text {
@@ -228,10 +242,13 @@ header h1 {
 
     .header-text-container {
         text-align: left;
+        max-width: 50vw;
     }
 
     .search-container {
-        margin-top: 25px;
+        height: 100%;
+        margin-top: 5px;
+        margin-bottom: 5px;
     }
 
     .modal {
@@ -248,12 +265,16 @@ header h1 {
 @media (min-width: 1024px) {
 
     .card:hover {
-        background: rgba(255, 255, 255, 1);
+        width: 90%;
         border: 1px solid rgba(50, 50, 50, 0.9);
+        box-shadow: 2px 4px 3px grey;
+    }
+    .card:active {
+        box-shadow: 0 0 4px;
     }
 
     .card:hover .card-text {
-        color: rgba(25, 25, 25, 1); 
+        color: rgb(126, 115, 115); 
     }
 
     .btn:hover {
