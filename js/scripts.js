@@ -22,6 +22,7 @@ document.querySelector(".search-container").insertAdjacentHTML("beforeend",
 // fetching 12 american employees randomly from the API.
 const employee_array = [];
 const gallery_div = document.getElementById("gallery");
+
 fetch("https://randomuser.me/api/?results=12&nat=us")
 	.then(res => res.json())
 	.then(data => {
@@ -29,7 +30,7 @@ fetch("https://randomuser.me/api/?results=12&nat=us")
 		return employee_array;
 	})
 	.then(employee_array => {
-	createGallery(employee_array)
+	createGallery(employee_array);
 	});
 
 //creating dynamically html for the gallery.
@@ -54,14 +55,16 @@ function createGallery( employee_array ) {
 			displayModal(evt.currentTarget.children[1].firstElementChild.id);
 		});
 	});
-};
+}
+
 // function to render the modal.
 function displayModal(employee_id) {
 	if (document.querySelector(".modal-container")) {
 		document.body.lastElementChild.remove();
 	}
-	const selected_employee = employee_array.filter((employee) => employee.id.value ===
+	const selected_employee = employee_array.filter(( employee ) => employee.id.value ===
 		employee_id);
+	const employee_index = employee_array.indexOf(selected_employee[0]);
 	const modal =
 		`
         <div class="modal-container">
@@ -88,17 +91,15 @@ function displayModal(employee_id) {
         </div>
 `;
 	document.body.insertAdjacentHTML("beforeend", modal);
-	document.querySelector("#modal-close-btn").addEventListener("click", evt => {
-		document.body.lastElementChild.remove()
+	document.querySelector("#modal-close-btn").addEventListener("click", () => {
+		document.body.lastElementChild.remove();
 	});
-	document.querySelector("#modal-prev").addEventListener("click", evt => {
-		const employee_index = employee_array.indexOf(selected_employee[0]);
+	document.querySelector("#modal-prev").addEventListener("click", () => {
 		if (employee_index !== 0) {
 			displayModal(employee_array[employee_index - 1].id.value);
 		}
 	});
-	document.querySelector("#modal-next").addEventListener("click", evt => {
-		const employee_index = employee_array.indexOf(selected_employee[0]);
+	document.querySelector("#modal-next").addEventListener("click", () => {
 		if (employee_index !== 11) {
 			displayModal(employee_array[employee_index + 1].id.value);
 		}
@@ -108,6 +109,6 @@ function displayModal(employee_id) {
 document.querySelector("#search-input").addEventListener("input", evt => {
 	const filter_employee = employee_array.filter(employee => employee.name.first
 		.toLowerCase().includes(evt.target.value.toLowerCase()) || employee.name.last
-		.toLowerCase().includes(evt.target.value.toLowerCase()))
+		.toLowerCase().includes(evt.target.value.toLowerCase()));
 	createGallery(filter_employee);
 });
