@@ -78,9 +78,9 @@ function displayModal( employee_id, employee_array) {
                     <p class="modal-text cap">${selected_employee[0].location.city}</p>
                     <hr>
                     <p class="modal-text">${selected_employee[0].phone.replace("-", " ")}</p>
-                    <p class="modal-text">${selected_employee[0].location.street.number} ${selected_employee[0].location.street.name},
-                        ${selected_employee[0].location.state}.\
-                        ${selected_employee[0].location.postcode}.</p>
+                    <p class="modal-text">${selected_employee[0].location.street.number} \
+					${selected_employee[0].location.street.name}, \
+					${selected_employee[0].location.state}.${selected_employee[0].location.postcode}.</p>
                     <p class="modal-text">Birthday: ${selected_employee[0].dob.date.slice(5,7)}/${selected_employee[0].dob.date.slice(8,10)}/${selected_employee[0].dob.date.slice(0,4)}</p>
                 </div>
             </div>
