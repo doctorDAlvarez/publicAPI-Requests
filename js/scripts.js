@@ -22,15 +22,18 @@ document.querySelector(".search-container").insertAdjacentHTML("beforeend",
 // fetching 12 american employees randomly from the API.
 const employee_array = [];
 const gallery_div = document.getElementById("gallery");
-fetch("https://randomuser.me/api/?results=12&nat=us").then(res => res.json()).then(
-	data => {
+fetch("https://randomuser.me/api/?results=12&nat=us")
+	.then(res => res.json())
+	.then(data => {
 		employee_array.push(...data.results);
 		return employee_array;
-	}).then(employee_array => {
+	})
+	.then(employee_array => {
 	createGallery(employee_array)
-});
+	});
+
 //creating dynamically html for the gallery.
-function createGallery(employee_array) {
+function createGallery( employee_array ) {
 	gallery_div.innerHTML = "";
 	employee_array.forEach(employee => {
 		const gallery_html =
@@ -53,7 +56,7 @@ function createGallery(employee_array) {
 		displayModal(evt.currentTarget.children[1].firstElementChild.id);
 	}));
 };
-
+// function to render the modal.
 function displayModal(employee_id) {
 	if (document.querySelector(".modal-container")) {
 		document.body.lastElementChild.remove();
