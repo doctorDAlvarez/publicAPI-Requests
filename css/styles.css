@@ -171,8 +171,8 @@ header h1 {
     color: rgba(255, 255, 255, 0.9);
     background: rgba(0, 0, 0, 0.8);
     outline: none;
-    border-radius: 0 0 1em 1em;
-    border: 1px solid rgba(50, 50, 50, 0.3);
+    border-radius: 0.25em;
+    border: 2px solid rgba(50, 50, 50, 0.3);
 }
 
 .modal-img {
@@ -193,8 +193,7 @@ header h1 {
     font-size: 1.2rem;
     letter-spacing: 2px;
     color: ghostwhite;
-    margin: 3px;
-    text-justify: auto;
+    margin: 5px;
 }
 
 .modal hr {
