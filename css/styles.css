@@ -16,7 +16,7 @@ html, body {
 body {
     font-family: "Nunito", sans-serif;
     text-align: center;
-    background: lightgoldenrodyellow;
+    background: #d0d0cf;
 }
 
 header {
@@ -96,8 +96,8 @@ header h1 {
     padding: 20px 5px;
     background-color:white;
     border-radius: 20px;
-    box-shadow: 0 0 5px 2px rgb(190, 204, 191);
-    border: 1px solid rgba(209, 219, 208, 0.918);
+    box-shadow: 0 0 5px 2px rgb(185, 192, 206);
+    border: 1px solid rgba(203, 213, 236, 0.918);
     transition: 4ms ease-out;
     overflow: hidden;
     font-family: monospace;
@@ -280,8 +280,8 @@ header h1 {
 
     .card:hover {
         width: 90%;
-        border: 1px solid rgb(152, 240, 168);
-        box-shadow: 0px 0px 15px grey;
+        border: 1px solid rgb(174, 192, 226);
+        box-shadow: 0px 0px 15px 3px grey;
     }
     .card:active {
         box-shadow: 0 0 4px;

@@ -1,12 +1,13 @@
 /********************************
  * Team Treehouse JS techDegree
  * Dynamic employee directory - 
- * Public API requests.
+ * Using public API requests.
  * 
  * Author:
  * @doctorDAlvarez on twitter
  * April 2021.
  *******************************/
+
 //creating dynamically html search feature.
 const search_html =
 	` 
@@ -18,7 +19,7 @@ const search_html =
 document.querySelector(".search-container").insertAdjacentHTML("beforeend",
 	search_html);
 
-    // fetching 12 american employees randomly from the API.
+// fetching 12 american employees randomly from the API.
 const employee_array = [];
 const gallery_div = document.getElementById("gallery");
 fetch("https://randomuser.me/api/?results=12&nat=us").then(res => res.json()).then(
