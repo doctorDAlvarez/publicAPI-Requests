@@ -50,11 +50,10 @@ function createGallery( employee_array ) {
         </div>
         `;
 		gallery_div.insertAdjacentHTML("beforeend", gallery_html);
+		gallery_div.lastElementChild.addEventListener("click", evt => {
+			displayModal(evt.currentTarget.children[1].firstElementChild.id);
+		});
 	});
-	const card_arr = Array.from(gallery_div.children);
-	card_arr.forEach(card => card.addEventListener("click", evt => {
-		displayModal(evt.currentTarget.children[1].firstElementChild.id);
-	}));
 };
 // function to render the modal.
 function displayModal(employee_id) {
