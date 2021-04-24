@@ -1,5 +1,5 @@
 ## public API requests. Awesome startup employee directory.
-This is project 5 of my treeHouse fullStackJavaScript techDegree, using async fetch() and a public API, we implement a online company directory to search for employees across the world.
+This is project 5 of my treeHouse fullStackJavaScript techDegree, using async fetch() and a public API, we implement an online company directory to search for employees across the world.
 
 ## Motivation
 Train and learn public APIs management, implement in a cool, common real world application.
