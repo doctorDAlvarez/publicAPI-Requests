@@ -16,27 +16,26 @@ const search_html =
     <input type="submit" value="&#x1F50D;" id="search-submit" class="search-submit">
     </form>
     `;
-document.querySelector(".search-container").insertAdjacentHTML("beforeend",
-	search_html);
+document.querySelector( ".search-container" ).insertAdjacentHTML( "beforeend", search_html );
 
 // fetching 12 american employees randomly from the API.
 const employee_array = [];
-const gallery_div = document.getElementById("gallery");
-
-fetch("https://randomuser.me/api/?results=12&nat=us")
-	.then(res => res.json())
-	.then(data => {
+const gallery_div = document.getElementById( "gallery" );
+const body = document.body;
+fetch( "https://randomuser.me/api/?results=12&nat=us" )
+	.then( res => res.json() )
+	.then( data => {
 		employee_array.push(...data.results);
 		return employee_array;
 	})
-	.then(employee_array => {
-	createGallery(employee_array);
+	.then( employee_array => {
+		createGallery( employee_array );
 	});
 
-//creating dynamically html for the gallery.
+//creating dynamically html for the gallery and adding each event listener.
 function createGallery( employee_array ) {
 	gallery_div.innerHTML = "";
-	employee_array.forEach(employee => {
+	employee_array.forEach( employee => {
 		const gallery_html =
 			`
         <div class="card">
@@ -50,21 +49,22 @@ function createGallery( employee_array ) {
             </div>
         </div>
         `;
-		gallery_div.insertAdjacentHTML("beforeend", gallery_html);
-		gallery_div.lastElementChild.addEventListener("click", evt => {
-			displayModal(evt.currentTarget.children[1].firstElementChild.id);
+		gallery_div.insertAdjacentHTML( "beforeend", gallery_html );
+		gallery_div.lastElementChild.addEventListener( "click", evt => {
+			displayModal( evt.currentTarget.children[1].firstElementChild.id, employee_array );
 		});
 	});
 }
 
 // function to render the modal.
-function displayModal(employee_id) {
-	if (document.querySelector(".modal-container")) {
-		document.body.lastElementChild.remove();
+function displayModal( employee_id, employee_array) {
+	const modalContainer = document.querySelector( ".modal-container" );
+	if ( modalContainer ) {
+		modalContainer.remove();
 	}
-	const selected_employee = employee_array.filter(( employee ) => employee.id.value ===
-		employee_id);
-	const employee_index = employee_array.indexOf(selected_employee[0]);
+	const selected_employee = employee_array.filter( ( employee ) => 
+		employee.id.value === employee_id );
+	const employee_index = employee_array.indexOf( selected_employee[0] );
 	const modal =
 		`
         <div class="modal-container">
@@ -89,26 +89,27 @@ function displayModal(employee_id) {
                 <button type="button" id="modal-next" class="modal-next btn">Next</button>
             </div>
         </div>
-`;
-	document.body.insertAdjacentHTML("beforeend", modal);
-	document.querySelector("#modal-close-btn").addEventListener("click", () => {
-		document.body.lastElementChild.remove();
-	});
-	document.querySelector("#modal-prev").addEventListener("click", () => {
-		if (employee_index !== 0) {
-			displayModal(employee_array[employee_index - 1].id.value);
-		}
-	});
-	document.querySelector("#modal-next").addEventListener("click", () => {
-		if (employee_index !== 11) {
-			displayModal(employee_array[employee_index + 1].id.value);
+		`;
+	body.insertAdjacentHTML( "beforeend", modal );
+	document.querySelector( ".modal-container" ).addEventListener( "click", evt => {
+		if ( evt.target.parentElement.id === "modal-close-btn" ) {
+			evt.currentTarget.remove();
+		} else if ( evt.target.id === "modal-prev" ) {
+			if ( employee_index !== 0 ) {
+				displayModal( employee_array[employee_index - 1].id.value, employee_array );
+			}
+		} else if ( evt.target.id === "modal-next" ) {
+			if ( employee_index !== employee_array.length -1 ) {
+				displayModal( employee_array[employee_index + 1].id.value, employee_array );
+			}
 		}
 	});
 }
+
 // search feature
-document.querySelector("#search-input").addEventListener("input", evt => {
-	const filter_employee = employee_array.filter(employee => employee.name.first
-		.toLowerCase().includes(evt.target.value.toLowerCase()) || employee.name.last
-		.toLowerCase().includes(evt.target.value.toLowerCase()));
-	createGallery(filter_employee);
+document.querySelector( "#search-input" ).addEventListener( "input", evt => {
+	const filter_employee = employee_array.filter( employee => employee.name.first
+		.toLowerCase().includes( evt.target.value.toLowerCase() ) || employee.name.last
+		.toLowerCase().includes( evt.target.value.toLowerCase() ));
+	createGallery( filter_employee );
 });
